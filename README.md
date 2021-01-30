@@ -1,10 +1,12 @@
 # SnakeGame
-Criando jogo sneak em javascript
+Criando jogo snake em javascript
 
-Sou novo e gostaria de ajuda para melhorar meus codigos,se alguem tiver disponibilidade eu agradeço.
+Sou novo e gostaria de ajuda para melhorar meus codigos.
 
 utilizo p5.js
 
 Objetivo
-1 - aprimorar a logica de programação
-2 - mecanica de cobra coral, quando comer a comida gerar um corpo de outra cor.
+
+1 - aprimorar a logica de programação.
+2 - mecanica de cobra coral.
+3 - sistema de chefão ao atingir determinado ponto.
