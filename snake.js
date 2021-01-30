@@ -14,6 +14,7 @@ class Cobra {
 		
 	}
 	desenhoCobra(){
+		fill('black')
 		stroke('white')
 		this.posicao.forEach(
 			function (pos,lugar){
@@ -64,13 +65,15 @@ class Cobra {
 
 class Comida{
 	constructor(){
-		this.tamanho = 10;
-		this.color = 'red';
+		this.cols = floor(width/10)
+		this.rows = floor(height/10)
 	}
 	gerarComida(){
-
+		this.comida = createVector(floor(random(this.cols)), floor(random(this.rows)))
+		this.comida.mult(10)
 	}
 	desenhoComida(){
-
+		fill('#FF0000')
+		rect(this.comida.x, this.comida.y, 10, 10)
 	}
 }
