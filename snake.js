@@ -1,66 +1,76 @@
-class Cobra{
-    constructor(){
-        //tamanho de cada parte
-		this.tam = 10;
-		//velocidades
-		this._vX = 10;
-		this._vY = 0;
-        //cores da cobra
-        this.cor = [
-            {_corMargin:'#FFFFFF'},
-            {_corUm: '#1B1B1B'},
-            {_corDois: '#FFA500'}
-        ];
-        //parte da cobra
-        this.corpo = [
-            {_x: 30, _y:200},
-            {_x: 20, _y:200},
-			{_x: 10, _y:200},
-        ];
-
-    }
-	/*--------------------DRAW------------------*/
-    desenharCobra() {
-        //colocarCores
-        stroke(this.cor[0]._corMargin)
-        fill(this.cor[1]._corUm)
-        
-        //colocar corpo pra c/array
-        function desenharCorpo(parte){
-            rect(parte._x, parte._y, 10, 10)
-        }
-		//
-		this.corpo.forEach(desenharCorpo)
-    }
-	/*------------------Movimento--------------*/
-	mover(){
-		//movimento da posição inicial no eixo x
-		const cabeca = {
-			_x: this.corpo[0]._x + this._vX,
-			_y: this.corpo[0]._y + this._vY
-		}
-		//adiciona nova posição
-		this.corpo.unshift(cabeca);
-		//tira a ultima posição
-		this.corpo.pop();
+class Cobra {
+	constructor(){
+		this.posicao = [
+			{_x: 50, _y:200},
+			{_x: 40, _y:200},
+			{_x: 30, _y:200},
+			{_x: 20, _y:200}
+		]
+		this.tamanho = 10;
+		this.velX = 1;
+		this.velY = 0;
+		this.cauda = []
+		this.compri = this.posicao.length
 		
-		console.log(this.corpo[0])
-		
-		
-		//colisão com limite da tela
-		this.corpo[0]._x = constrain(this.corpo[0]._x, 0, width - this.tam);
-		this.corpo[0]._y = constrain(this.corpo[0]._y, 0, height - this.tam);
-		
-		//colisão com a parede
-		if(this.corpo[1]._x == this.corpo[0]._x && this.corpo[1]._y == this.corpo[0]._y){
-			fill('black')
-			textSize(20)
-			text("Colidiu", 200, 200, 110, 110)
-		}
 	}
-	// função pra mudar direção
-	dir(x,y){
-		this._vX = x;
-		this._vY = y;
+	desenhoCobra(){
+		stroke('white')
+		this.posicao.forEach(
+			function (pos,lugar){
+				rect(pos._x, pos._y, 10 , 10)
+				if (lugar % 2){
+					//console.log('par')
+					fill('black')
+				}else{
+					//console.log('impar')
+					fill('orange')
+				}
+			},
+		);
+	}
+	movimento(){
+
+		const cabecaCobra = {
+			_x: this.posicao[0]._x + this.velX * this.tamanho,
+			_y: this.posicao[0]._y + this.velY * this.tamanho
+		}
+		this.posicao.unshift(cabecaCobra)
+		this.posicao.pop()
+
+		this.dir = function(x,y) {
+			this.velX = x;
+			this.velY = y;
+		}
+
+	}
+	controle(){
+
+		if(key === 'ArrowUp'){
+			this.dir(0, -1);
+		}else if(key === 'ArrowDown'){
+			this.dir(0 , 1);
+		}else if(key === 'ArrowLeft'){
+			this.dir(-1, 0);
+		}else if(key === 'ArrowRight'){
+			this.dir(1, 0);
+		}
+
+	}
+	colisao(){
+		this.posicao[0]._x = constrain(this.posicao[0]._x, 0, width - this.tamanho);
+		this.posicao[0]._y = constrain(this.posicao[0]._y, 0, height - this.tamanho);
+	}
+}
+
+class Comida{
+	constructor(){
+		this.tamanho = 10;
+		this.color = 'red';
+	}
+	gerarComida(){
+
+	}
+	desenhoComida(){
+
 	}
 }
