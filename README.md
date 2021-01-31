@@ -5,8 +5,10 @@ Sou novo e gostaria de ajuda para melhorar meus codigos.
 
 utilizo p5.js
 
-Objetivo
+## Objetivo
 
-1 - aprimorar a logica de programação.
-2 - mecanica de cobra coral.
-3 - sistema de chefão ao atingir determinado ponto.
+ - aprimorar a logica de programação.
+ - mecanica de cobra coral.
+ - sistema de chefão ao atingir determinado ponto.
+
+![img git](https://user-images.githubusercontent.com/54519397/106373662-8b49ad00-635a-11eb-81a8-b0f54a7b295c.png)
