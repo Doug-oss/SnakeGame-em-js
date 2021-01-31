@@ -1,7 +1,7 @@
 let cobra;
 let comida;
 function setup() {
-    createCanvas(400, 400)
+    createCanvas(500, 500)
     frameRate(7)
     cobra = new Cobra();
     comida = new Comida();
@@ -15,4 +15,5 @@ function draw(){
     cobra.controle()
     cobra.colisao();
     comida.desenhoComida();
+    comerComida()
 }

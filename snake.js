@@ -1,12 +1,12 @@
 class Cobra {
 	constructor(){
 		this.posicao = [
-			{_x: 50, _y:200},
+			{_x: 60, _y:200},
 			{_x: 40, _y:200},
-			{_x: 30, _y:200},
-			{_x: 20, _y:200}
+			{_x: 20, _y:200},
+			{_x: 0, _y:200}
 		]
-		this.tamanho = 10;
+		this.tamanho = 20;
 		this.velX = 1;
 		this.velY = 0;
 		this.cauda = []
@@ -18,7 +18,7 @@ class Cobra {
 		stroke('white')
 		this.posicao.forEach(
 			function (pos,lugar){
-				rect(pos._x, pos._y, 10 , 10)
+				rect(pos._x, pos._y, cobra.tamanho , cobra.tamanho)
 				if (lugar % 2){
 					//console.log('par')
 					fill('black')
@@ -65,15 +65,22 @@ class Cobra {
 
 class Comida{
 	constructor(){
-		this.cols = floor(width/10)
-		this.rows = floor(height/10)
+		this.cols = floor(width/20)
+		this.rows = floor(height/20)
 	}
 	gerarComida(){
 		this.comida = createVector(floor(random(this.cols)), floor(random(this.rows)))
-		this.comida.mult(10)
+		this.comida.mult(20)
 	}
 	desenhoComida(){
 		fill('#FF0000')
-		rect(this.comida.x, this.comida.y, 10, 10)
+		rect(this.comida.x, this.comida.y, 20, 20)
 	}
+}
+function comerComida(){
+	if(cobra.posicao[0]._x === comida.comida.x && cobra.posicao[0]._y === comida.comida.y){
+		console.log('Comeu')
+		cobra.posicao.push(cobra.cauda)
+		comida.gerarComida();
+    }
 }
