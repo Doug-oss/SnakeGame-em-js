@@ -43,6 +43,9 @@ class Cobra {
 			this.velY = y;
 		}
 
+		/*for(var i = 0; i < this.posicao.length; i++) {
+			console.log(i+' pedaço: '+this.posicao[i]._x +' cabeca: '+ this.posicao[0]._x);	
+		}*/
 	}
 	controle(){
 
@@ -79,8 +82,9 @@ class Comida{
 }
 function comerComida(){
 	if(cobra.posicao[0]._x === comida.comida.x && cobra.posicao[0]._y === comida.comida.y){
-		console.log('Comeu')
+		//console.log('Comeu')
 		cobra.posicao.push(cobra.cauda)
 		comida.gerarComida();
+		cobra.compri += 1;
     }
 }
