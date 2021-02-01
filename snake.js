@@ -63,6 +63,18 @@ class Cobra {
 	colisao(){
 		this.posicao[0]._x = constrain(this.posicao[0]._x, 0, width - this.tamanho);
 		this.posicao[0]._y = constrain(this.posicao[0]._y, 0, height - this.tamanho);
+		for(var i = 1; i < this.posicao.length; i++){
+			if(this.posicao[i]._x === this.posicao[0]._x && this.posicao[i]._y === this.posicao[0]._y){
+				this.posicao = [
+					{_x: 80, _y:200},
+					{_x: 60, _y:200},
+					{_x: 40, _y:200},
+					{_x: 20, _y:200}
+				]
+				this.compri = this.posicao.length
+				comida.gerarComida()
+			}
+		}
 	}
 }
 
